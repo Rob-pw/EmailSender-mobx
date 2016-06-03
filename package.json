@@ -4,7 +4,10 @@
   "description": "Boilerplate for MobX + React project with JSX, ES6 compilation and hot code reloading",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "npm run test:webpack && npm run test:mocha",
+    "test:webpack": "NODE_ENV=production webpack --config webpack/test.config.js",
+    "test:mocha": "mocha test/.test-bundle.js --reporter nyan --require test/test_helper.js"
   },
   "repository": {
     "type": "git",

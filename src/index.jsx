@@ -120,9 +120,10 @@ class OptionSelectionView extends Component {
     }
 
     function getOptionsToDisplay() {
-      const options = props.selected ?
-        state.selectedContacts :
-        getOptions(state.selectedType);
+      if (props.selected)
+        return state.selectedContacts;
+
+      const options = getOptions(state.selectedType);
 
       if (!state.filterText)
         return options;
@@ -156,7 +157,7 @@ class SendButtonView extends Component {
     return (
       <button
         onClick={() => alert(`Sent ${state.selectedContacts.length}`)}
-        disabled={isDisabled}>
+        disabled={isDisabled()}>
         Send!
       </button>
     );
